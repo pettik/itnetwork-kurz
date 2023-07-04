@@ -1,6 +1,8 @@
 # ITNETWORK - ZÁVĚREČNÝ PROJEKT
 
-V tomto repozitáři naleznete celý **ZÁVEREČNÝ PROJEKT (Evidence pojištění - Zjednodušená verze)** k rekvalifikačnímu kurzu **Programátor www aplikací v JavaScript** od společnosti [ITNetwork.cz](https://www.itnetwork.cz/prace-a-podnikani-v-it/rekvalifikacni-kurzy).
+V tomto repozitáři naleznete **ZÁVEREČNÝ PROJEKT (Evidence pojištění - Zjednodušená verze)** k rekvalifikačnímu kurzu **Programátor www aplikací v JavaScript** od společnosti [ITNetwork.cz](https://www.itnetwork.cz/prace-a-podnikani-v-it/rekvalifikacni-kurzy).
+
+<img src="assets/design/page-preview.png" width="800px">
 
 ## Obsah
 
@@ -16,7 +18,6 @@ V tomto repozitáři naleznete celý **ZÁVEREČNÝ PROJEKT (Evidence pojištěn
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Přehled
 
@@ -42,16 +43,13 @@ Naprogramuj webovou aplikaci pro evidenci pojistných událostí.
   - `toString()` pro jejich výpis
 
 ### Screenshot
+#### Desktop Preview 💻
+<img src="assets/design/page-preview.png" width="800px">
+<img src="assets/design/page-preview-dark.png" width="800px">
 
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+#### Mobile Preview 📱
+<img src="assets/design/mobile-preview-light.png" width="300px">
+<img src="assets/design/mobile-preview-dark.png" width="300px">
 
 ### Links
 
