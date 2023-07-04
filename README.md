@@ -7,9 +7,9 @@ V tomto repozitáři naleznete **ZÁVEREČNÝ PROJEKT (Evidence pojištění - Z
 ## Obsah
 
 - [Přehled](#přehled)
-  - [Zadání projektu](#zadani)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
+  - [Zadání projektu 📋](#zadani)
+  - [Náhled 👀](#nahled)
+  - [Odkaz 📡](#odkaz)
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
@@ -42,19 +42,30 @@ Naprogramuj webovou aplikaci pro evidenci pojistných událostí.
   - Využívejte konstruktory pro inicializaci objektů
   - `toString()` pro jejich výpis
 
-### Screenshot
-#### Desktop Preview 💻
+### Nahled
+#### Desktopový náhled - Světlý motiv 🖥
 <img src="assets/design/page-preview.png" width="800px">
+
+#### Desktopový náhled - Tmavý motiv 🖥
 <img src="assets/design/page-preview-dark.png" width="800px">
 
-#### Mobile Preview 📱
-<img src="assets/design/mobile-preview-light.png" width="300px">
-<img src="assets/design/mobile-preview-dark.png" width="300px">
+#### Mobilní náhled 📱
+<table>
+  <tr>
+    <td>Světlý motiv</td>
+    <td>Tmavý motiv</td>
+  </tr>
+  <tr>
+    <td><img src="assets/design/mobile-preview-light.png" width="350px"></td>
+    <td><img src="assets/design/mobile-preview-dark.png" width="350px"></td>
+  </tr>
+</table>
 
-### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+
+### Odkaz
+
+➡ [Projekt ŽIVĚ k vyzkoušení](https://pettik-itnetwork.netlify.com/) ⬅
 
 ## My process
 
