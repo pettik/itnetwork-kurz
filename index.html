@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="cs-cz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InsuranceAPP</title>
+
+    <!--=============== MY STYLES ===============-->
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <h1>INSURANCE<span>APP</span></h1>
+
+    <!-- Theme change buttono -->
+    <img
+      src="assets/img/moon-outline.svg"
+      alt="moon icon"
+      class="moon"
+      id="change-theme-moon"
+    />
+    <img
+      src="assets/img/sunny-outline.svg"
+      alt="moon icon"
+      class="sun nonvisible"
+      id="change-theme-sun"
+    />
+
+    <div class="newClient">
+      <h2>Nový pojištěnec</h2>
+      <div class="form">
+        <form id="formular">
+          <label for="name">Jméno</label>
+          <input type="text" id="name" placeholder="Jan" class="user-input" />
+          <p class="error-message error-name">
+            Minimálně <span>2</span> znaky (a-Z)
+          </p>
+          <label for="surname">Příjmení</label>
+          <input
+            type="text"
+            id="surname"
+            placeholder="Novák"
+            class="user-input"
+          />
+          <p class="error-message error-surname">
+            Minimálně <span>2</span> znaky (a-Z)
+          </p>
+
+          <label for="age">Věk</label>
+          <input type="number" id="age" placeholder="31" class="user-input" />
+          <p class="error-message error-age">
+            Pouze <span>číslice</span> (0-150)
+          </p>
+          <label for="phone">Telefon</label>
+          <input
+            type="text"
+            id="phone"
+            placeholder="731 584 972"
+            class="user-input"
+          />
+          <p class="error-message error-phone">
+            Formát <span>123 456 789</span>/<span>123456789</span>
+          </p>
+
+          <button type="submit" id="sendNewClient">Uložit</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="client-list">
+      <h2>Pojištěnci (<span id="clientCounterh2"></span>)</h2>
+      <table id="main-table"></table>
+    </div>
+    <footer>
+      <p>
+        Powered by&nbsp;<a href="https://www.itnetwork.cz/">ITnetwork</a
+        >&nbsp;&copy; This &nbsp;<a
+          href="https://en.wikipedia.org/wiki/Single-page_application"
+          alt="SPA - wiki"
+          id="spa"
+          >SPA</a
+        >&nbsp; is made with&nbsp;
+        <img
+          src="assets/img/heart-3-fill.svg"
+          class="heart-icon"
+          alt="heart icon"
+        />
+        &nbsp;by&nbsp;<a href="https://github.com/pettik">Petr Bednarski</a>
+      </p>
+    </footer>
+
+    <div class="button-area">
+      <div id="loadData">
+        <div id="load-help">
+          Tlačítko pro nahrání <span>testovacích dat</span>
+        </div>
+        <img
+          src="assets/img/upload-2-line.svg"
+          class="upload-icon"
+          alt="upload image"
+        />
+      </div>
+      <div id="flush">
+        <div id="restart-help">Tlačítko pro <span>restart dat</span></div>
+        <img
+          src="assets/img/loop-left-line.svg"
+          class="refresh-icon"
+          alt="refresh image"
+        />
+      </div>
+    </div>
+
+    <script src="assets/js/InsuranceApp.js"></script>
+    <script src="assets/js/Client.js"></script>
+    <script src="assets/js/index.js"></script>
+  </body>
+</html>

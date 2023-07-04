@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="cs-cz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TEST - !!! - InsuranceAPP</title>
+
+    <!--=============== MY STYLES ===============-->
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <h1><span>TEST</span>INSURANCE<span>APP</span></h1>
+
+    <!-- Theme change buttono -->
+    <img
+      src="assets/img/moon-outline.svg"
+      alt="moon icon"
+      class="moon"
+      id="change-theme-moon"
+    />
+    <img
+      src="assets/img/sunny-outline.svg"
+      alt="moon icon"
+      class="sun nonvisible"
+      id="change-theme-sun"
+    />
+
+    <div class="newClient">
+      <h2>Nový pojištěnec</h2>
+      <div class="form">
+        <form id="formular">
+          <label for="name">Jméno</label>
+          <input type="text" id="name" placeholder="Jan" class="user-input" />
+          <p class="error-message error-name">
+            Minimálně <span>2</span> znaky (a-Z)
+          </p>
+          <label for="surname">Příjmení</label>
+          <input
+            type="text"
+            id="surname"
+            placeholder="Novák"
+            class="user-input"
+          />
+          <p class="error-message error-surname">
+            Minimálně <span>2</span> znaky (a-Z)
+          </p>
+
+          <label for="age">Věk</label>
+          <input type="number" id="age" placeholder="31" class="user-input" />
+          <p class="error-message error-age">
+            Pouze <span>číslice</span> (0-150)
+          </p>
+          <label for="phone">Telefon</label>
+          <input
+            type="text"
+            id="phone"
+            placeholder="731 584 972"
+            class="user-input"
+          />
+          <p class="error-message error-phone">
+            Formát <span>123 456 789</span> nebo <span>123456789</span>
+          </p>
+
+          <button type="submit" id="sendNewClient">Uložit</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="client-list">
+      <h2>Pojištěnci (<span id="clientCounterh2"></span>)</h2>
+      <table id="main-table"></table>
+    </div>
+    <footer>
+      <p>
+        Powered by&nbsp;<a href="https://www.itnetwork.cz/">ITnetwork</a
+        >&nbsp;&copy; This &nbsp;<a
+          href="https://en.wikipedia.org/wiki/Single-page_application"
+          alt="SPA - wiki"
+          id="spa"
+          >SPA</a
+        >&nbsp; is made with&nbsp;
+        <img
+          src="assets/img/heart-3-fill.svg"
+          class="heart-icon"
+          alt="heart icon"
+        />
+        &nbsp;by&nbsp;<a href="https://github.com/pettik">Petr Bednarski</a>
+      </p>
+    </footer>
+
+    <div class="button-area">
+      <div id="loadData">
+        <div id="load-help">
+          Tlačítko pro nahrání <span>testovacích dat</span>
+        </div>
+        <img
+          src="assets/img/upload-2-line.svg"
+          class="upload-icon"
+          alt="upload image"
+        />
+      </div>
+      <div id="flush">
+        <div id="restart-help">Tlačítko pro <span>restart dat</span></div>
+        <img
+          src="assets/img/loop-left-line.svg"
+          class="refresh-icon"
+          alt="refresh image"
+        />
+      </div>
+    </div>
+    <script>
+      'use strict';
+
+      class Client {
+        constructor(id, name, surname, age, phoneNumber) {
+          this.id = id;
+          this.name = name;
+          this.surname = surname;
+          this.age = age;
+          this.phoneNumber = phoneNumber;
+        }
+
+        toString() {
+          return `<tr>
+    <td >${this.id}</td><td>${this.name} ${this.surname}</td> <td>${this.phoneNumber}</td> <td>${this.age}</td></tr>`;
+        }
+      }
+
+      class InsuranceApp {
+        constructor(language = 'cs-CZ') {
+          this.language = language;
+          this.clients = this.loadClientsFromLocalStorage();
+
+          // DOM elements
+          this.moon = document.getElementById('change-theme-moon');
+          this.sun = document.getElementById('change-theme-sun');
+          this.mainTable = document.getElementById('main-table');
+          this.nameInput = document.getElementById('name');
+          this.surnameInput = document.getElementById('surname');
+          this.ageInput = document.getElementById('age');
+          this.phoneInput = document.getElementById('phone');
+          this.sendNewClientBtn = document.getElementById('sendNewClient');
+          this.clientListDiv = document.getElementById('client-list');
+          this.formular = document.getElementById('formular');
+          this.counter = this.calculateIdCounter();
+          this.clientCounterh2 = document.getElementById('clientCounterh2');
+
+          this.loadDataButton = document.getElementById('loadData');
+          this.flushButton = document.getElementById('flush');
+
+          this.setEvents();
+        }
+
+        setEvents() {
+          // Show the client list
+          this.formular.addEventListener('submit', e => {
+            e.preventDefault();
+            this.validateForm();
+          });
+
+          // delete table data and localStorage
+          this.flushButton.onclick = () => {
+            localStorage.clear();
+            this.clients = [];
+            this.mainTable.innerHTML = '';
+            this.counter = this.calculateIdCounter();
+            this.listClients();
+            // Show the client list
+            this.clientListDiv.classList.remove('visible'); //if you want to hide FORM element
+          };
+
+          // load default data
+          this.loadDataButton.onclick = () => {
+            this.loadTestingData();
+            this.listClients();
+            this.calculateIdCounter();
+            location.reload();
+          };
+
+          // change theme to dark
+          this.moon.onclick = () => {
+            this.moon.classList.add('nonvisible');
+            this.sun.classList.remove('nonvisible');
+            document.body.classList.add('dark');
+          };
+          this.sun.onclick = () => {
+            this.sun.classList.add('nonvisible');
+            this.moon.classList.remove('nonvisible');
+            document.body.classList.remove('dark');
+          };
+        }
+
+        validateForm() {
+          const nameInput = this.nameInput.value;
+          const surnameInput = this.surnameInput.value;
+          const ageInput = parseInt(this.ageInput.value);
+          const phoneInput = this.phoneInput.value;
+
+          // Reset error messages
+          const errorMessages =
+            document.getElementsByClassName('error-message');
+          for (let i = 0; i < errorMessages.length; i++) {
+            errorMessages[i].style.visibility = 'hidden';
+          }
+
+          const inputBorders = document.getElementsByClassName('user-input');
+          for (let i = 0; i < inputBorders.length; i++) {
+            inputBorders[i].classList.remove('red-border');
+          }
+
+          let valid = true;
+
+          // Validate name
+          if (nameInput.length < 2) {
+            this.showErrorMessage('error-name');
+            this.nameInput.classList.add('red-border');
+            valid = false;
+          }
+
+          // Validate surname
+          if (surnameInput.length < 2) {
+            this.showErrorMessage('error-surname');
+            this.surnameInput.classList.add('red-border');
+            valid = false;
+          }
+
+          // Validate age
+          if (isNaN(ageInput) || ageInput < 0 || ageInput > 150) {
+            this.showErrorMessage('error-age');
+            this.ageInput.classList.add('red-border');
+            valid = false;
+          }
+
+          // Validate phone number
+          if (
+            !/^(\d{3}\s\d{3}\s\d{3}|\d{9}|\+\d{3}\s\d{3}\s\d{3}|\+\d{12})$/.test(
+              phoneInput.trim()
+            )
+          ) {
+            this.showErrorMessage('error-phone');
+            this.phoneInput.classList.add('red-border');
+            valid = false;
+          }
+
+          //note to this conditions
+          // ^ a $ odpovídají začátku a konci řetězce.
+          // \d{3} odpovídá přesně třem číslicím.
+          // \s odpovídá jednomu prázdnému znaku.
+          // | je operátor alternace, který umožňuje shodu více alternativ.
+          // První alternativou je \d{3}\s\d{3}\s\d{3}, který odpovídá formátu "ABC DEF GHI" (tři skupiny po třech číslicích oddělené mezerami).
+          // Druhou alternativou je \d{9}, který odpovídá formátu "ABCDEFGHI" (devět číslic bez mezer).
+          // Třetí alternativou je \+\d{3}\s\d{3}\s\d{3}, který odpovídá formátu „+420 ABC DEF GHI“ (kód země začínající „+“ následovaný třemi skupinami tři číslice oddělené mezerami).
+          // Čtvrtá alternativa je \+\d{12}, která odpovídá formátu „+420ABCDEFGHI“ (kód země začínající „+“ následovaný dvanácti číslicemi bez mezer).
+
+          if (valid) {
+            const client = new Client(
+              this.counter++,
+              nameInput,
+              surnameInput,
+              ageInput,
+              this.parsePhoneNumber()
+            );
+            this.clients.push(client);
+            this.saveClientsToLocalStorage();
+            this.listClients();
+            this.refreshInputs();
+          }
+        }
+
+        showErrorMessage(errorId) {
+          const errorMessage = document.getElementsByClassName(errorId)[0];
+          errorMessage.style.visibility = 'visible';
+        }
+
+        // parse phonenumber input
+        parsePhoneNumber() {
+          let tempNumber = this.phoneInput.value.replace(/\s/g, '').trim();
+          if (tempNumber.startsWith('+420')) {
+            tempNumber = tempNumber.substring(4);
+          }
+          const newPhoneNumber = tempNumber.match(/.{1,3}/g).join(' ');
+          return newPhoneNumber;
+        }
+
+        // SORTING CLIENTS BY NAME  //BIG CHANGES
+        sortClientsByName() {
+          this.clients.sort((a, b) => {
+            const nameA = a.name.toUpperCase();
+            const nameB = b.name.toUpperCase();
+            if (nameA < nameB) {
+              return -1;
+            }
+            if (nameA > nameB) {
+              return 1;
+            }
+            return 0;
+          });
+        }
+        // SORTING CLIENTS BY SURNAME   //BIG CHANGES
+        sortClientsBySurname() {
+          const collator = new Intl.Collator('cs', { sensitivity: 'base' });
+
+          this.clients.sort((a, b) => {
+            const surnameA = a.surname;
+            const surnameB = b.surname;
+
+            return collator.compare(surnameA, surnameB);
+          });
+        }
+
+        // SORTING CLIENTS BY ID
+        sortClientsById() {
+          this.clients.sort((a, b) => {
+            return a.id - b.id;
+          });
+        }
+
+        // SORTING CLIENTS BY AGE
+        sortClientsByAge() {
+          this.clients.sort((a, b) => {
+            return a.age - b.age;
+          });
+        }
+
+        // SORTING CLIENTS BY PHONE NUMBER
+        sortClientsByPhoneNumber() {
+          this.clients.sort((a, b) => {
+            const phoneNumberA = parseInt(a.phoneNumber.replace(/\s/g, ''));
+            const phoneNumberB = parseInt(b.phoneNumber.replace(/\s/g, ''));
+            return phoneNumberA - phoneNumberB;
+          });
+        }
+
+        listClients() {
+          this.mainTable.innerHTML = '';
+          this.clientCounterh2.value = '0';
+          this.mainTable.innerHTML += `
+<thead>
+<th id="th-id">ID</th>
+<th><span id="th-name">Jméno</span> a <span id="th-surname">příjmení</span></th>
+
+<th id="th-phone">Telefon</th>
+<th id="th-age">Věk</th>
+<th>Smazat</th>
+</thead>`; //BIG CHANGES
+
+          if (localStorage.clients == undefined || this.clients.length === 0) {
+            this.mainTable.innerHTML += `<p class="empty-message">Zatím tady není žádný pojištěnec <img
+    src="assets/img/user-unfollow-line.svg"
+    class="user-icon"
+    alt="user icon"
+  /></p>`;
+          }
+
+          this.thId = document.getElementById('th-id');
+          this.thName = document.getElementById('th-name');
+          this.thSurname = document.getElementById('th-surname');
+          this.thAge = document.getElementById('th-age');
+          this.thPhone = document.getElementById('th-phone');
+          this.sortingElements = [
+            this.thId,
+            this.thName,
+            this.thSurname,
+            this.thPhone,
+            this.thAge,
+          ];
+
+          // SORTING CLIENTS BY NAME //BIG CHANGES
+          this.thName = document.getElementById('th-name'); //BIG CHANGES
+          this.thName.addEventListener('click', () => {
+            //BIG CHANGES
+
+            this.sortClientsByName(); //BIG CHANGES
+            this.listClients(); //BIG CHANGES
+            this.styleReset();
+            this.thName.classList.add('oranged');
+          });
+
+          // SORTING CLIENTS BY SURNAME //BIG CHANGES
+          this.thSurname = document.getElementById('th-surname'); //BIG CHANGES
+          this.thSurname.addEventListener('click', () => {
+            //BIG CHANGES
+            this.sortClientsBySurname(); //BIG CHANGES
+            this.listClients(); //BIG CHANGES
+            this.styleReset();
+            this.thSurname.classList.add('oranged');
+          });
+
+          // SORTING CLIENTS BY ID
+          this.thId = document.getElementById('th-id');
+          this.thId.addEventListener('click', () => {
+            this.sortClientsById();
+            this.listClients();
+            this.styleReset();
+            this.thId.classList.add('oranged');
+          });
+
+          // SORTING CLIENTS BY AGE
+          this.thAge = document.getElementById('th-age');
+          this.thAge.addEventListener('click', () => {
+            this.sortClientsByAge();
+            this.listClients();
+            this.styleReset();
+            this.thAge.classList.add('oranged');
+          });
+
+          // SORTING CLIENTS BY PHONE NUMBER
+          this.thPhone = document.getElementById('th-phone');
+          this.thPhone.addEventListener('click', () => {
+            this.sortClientsByPhoneNumber();
+            this.listClients();
+            this.styleReset();
+            this.thPhone.classList.add('oranged');
+          });
+
+          // Add new rows for each client
+          this.clients.forEach(client => {
+            const row = document.createElement('tr');
+            row.innerHTML = client.toString();
+
+            // Create a delete button
+            const deleteButton = document.createElement('button');
+            deleteButton.classList.add('delete-button');
+            deleteButton.innerHTML =
+              '<img src="assets/img/close-circle-line.svg" class="delete-icon" alt="delete image">';
+            deleteButton.addEventListener('click', () => {
+              this.deleteClient(client);
+            });
+
+            // Create a new cell for the delete button
+            const deleteCell = document.createElement('td');
+            deleteCell.appendChild(deleteButton);
+
+            // Append the delete cell to the row
+            row.appendChild(deleteCell);
+
+            // Append the row to the table
+            this.mainTable.appendChild(row);
+          });
+
+          // Show the client list
+          this.clientListDiv.classList.add('visible');
+
+          this.clientCounterh2.innerHTML = this.clients.length;
+        }
+
+        styleReset() {
+          for (const element of this.sortingElements) {
+            element.classList.add('white');
+          }
+        }
+
+        saveClientsToLocalStorage() {
+          localStorage.setItem('clients', JSON.stringify(this.clients));
+          localStorage.setItem('counter', this.counter);
+        }
+
+        loadClientsFromLocalStorage() {
+          const clientsData = JSON.parse(localStorage.getItem('clients'));
+          return clientsData
+            ? clientsData.map(
+                data =>
+                  new Client(
+                    data.id,
+                    data.name,
+                    data.surname,
+                    data.age,
+                    data.phoneNumber
+                  )
+              )
+            : [];
+        }
+
+        calculateIdCounter() {
+          const counter = localStorage.getItem('counter');
+          return counter ? parseInt(counter) : 1;
+        }
+
+        deleteClient(client) {
+          const index = this.clients.findIndex(c => c.id === client.id);
+          if (index !== -1) {
+            this.clients.splice(index, 1);
+            this.saveClientsToLocalStorage();
+            this.listClients();
+          }
+        }
+
+        refreshInputs() {
+          this.nameInput.value = '';
+          this.surnameInput.value = '';
+          this.ageInput.value = '';
+          this.phoneInput.value = '';
+        }
+
+        loadTestingData() {
+          this.clients = [
+            {
+              id: 1,
+              name: 'Jarda',
+              surname: 'Čeperka',
+              age: '44',
+              phoneNumber: '777 848 741',
+            },
+            {
+              id: 2,
+              name: 'Andreas',
+              surname: 'Novotný',
+              age: '31',
+              phoneNumber: '731 785 444',
+            },
+            {
+              id: 3,
+              name: 'Jarmila',
+              surname: 'Koukalovic',
+              age: '22',
+              phoneNumber: '605 454 777',
+            },
+            {
+              id: 4,
+
+              name: 'Veronika',
+              surname: 'Kovářová',
+              age: '30',
+              phoneNumber: '607 578 646',
+            },
+            {
+              id: 5,
+              name: 'Johanes',
+              surname: 'Keitl',
+              age: '18',
+              phoneNumber: '777 484 684',
+            },
+            {
+              id: 6,
+              name: 'Karel',
+              surname: 'Zámečník',
+              age: '44',
+              phoneNumber: '605 444 847',
+            },
+            {
+              id: 7,
+              name: 'Lucie',
+              surname: 'Nováková',
+              age: '27',
+              phoneNumber: '602 123 456',
+            },
+            {
+              id: 8,
+              name: 'Pavel',
+              surname: 'Svoboda',
+              age: '39',
+              phoneNumber: '777 987 654',
+            },
+            {
+              id: 9,
+              name: 'Eva',
+              surname: 'Křížová',
+              age: '33',
+              phoneNumber: '604 555 888',
+            },
+            {
+              id: 10,
+              name: 'Martin',
+              surname: 'Dvořák',
+              age: '45',
+              phoneNumber: '733 111 222',
+            },
+            {
+              id: 11,
+              name: 'Jaroslav',
+              surname: 'Novák',
+              age: '28',
+              phoneNumber: '608 999 333',
+            },
+          ];
+          this.counter = this.clients.length + 1;
+          this.saveClientsToLocalStorage();
+          this.listClients();
+        }
+      }
+
+      const insuranceApp = new InsuranceApp();
+      insuranceApp.listClients();
+    </script>
+  </body>
+</html>
