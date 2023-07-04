@@ -5,7 +5,7 @@ V tomto repozitáři naleznete celý **ZÁVEREČNÝ PROJEKT (Evidence pojištěn
 ## Obsah
 
 - [Přehled](#overview)
-  - [Zadání projektu](https://github.com/pettik/itnetwork-kurz/edit/main/README.md#zad%C3%A1n%C3%AD)
+  - [Zadání projektu](#přehled)
   - [Screenshot](#screenshot)
   - [Links](#links)
 - [My process](#my-process)
