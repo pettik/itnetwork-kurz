@@ -12,7 +12,7 @@ V tomto repozitáři naleznete **ZÁVEREČNÝ PROJEKT (Evidence pojištění - Z
   - [Odkaz LIVE ➡🌍⬅](#odkaz)
 - [Můj proces](#muj-proces)
   - [Popis](#popis)
-  - [What I learned](#what-i-learned)
+  - [Funkcionality](#funkcionality)
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
@@ -76,11 +76,28 @@ Naprogramuj webovou aplikaci pro evidenci pojistných událostí.
 - Celý projekt se skládá z hlavního souboru `index.html` a složky `assets`, ve které jsou uloženy všechny dodatečné soubory (CSS styly, obrázky pro projekt, screeny projektu, JavaScript soubory).
 - JavaScript využívá metodu **Objektově orientovaného programování** a je poskládán ze 3 souborů (`Client.js`, `InsuranceApp.js`, `index.js`).
 - Při vyplnění jednotlivých políček formuláře a kliknutí na tlačítko `Uložit` se vyplněné záznamy (jsou-li správně) vypíší do jednotlivch řádků tabulky.
+- Je-li formulář správně vyplněný, ukládají se tyto data pole s názvem `clients` a do paměti prohlížeče `localStorage`. Při načtění stránky se kontroluje pamět localStorage a jsou-li zde nějaká data, zobrazí se v tabulce.
 - Z velké části tento projekt vychází ze základů logiky cvičení v [OOP - Lekce 5 - Tvorba OOP diáře v JavaScriptu](https://www.itnetwork.cz/javascript/oop/tvorba-oop-diare-v-javascriptu).
 - Design stránky byl záměrně inspirován designem stránky [ITnetwork.cz](https://www.itnetwork.cz/), pozadí zase aplikací **Whatsapp**.
 
 
 ### Funkcionality 
+
+#### 1) Přepínání na tmavý/svělý design
+Kliknutím na tlačítko **měsíce** v horní liště nadpisu (v pravném rohu stránky), se v JavaScriptu přidá k určitým elementům na stráce `CSS třída`, která má jiné vizuální vlastnosti a tím se docílí se prolnutí do **tmavého režimu**. Opětovným kliknutím na již změněnou ikonku **měsíce/slunce**, se třída odstraní a docílí se původního (svělého) motivu. Přechod je plynulý a nastavuje se paramterem `--theme-time` v CSS stylech (aktuálně trvá 0.85s).<br>
+<img src="assets/design/moon-sun-icon.png">
+
+#### 2) Formulář - ošetření vstupů uživatele
+Jednotlivé textové vstupy od uživatele jsou při kliknutí na tlačítko **Uložit** kontrolovány náslědovně:
+
+- Pole **Jméno** musí obsahovat alespoň **2 znaky**
+- Pole **Příjmení** musí obsahovat alespoň **2 znaky**
+- Pole **Věk** musí být **číslice** v rozmezí **0** až **169** *(na Zemi nebylo dokázáno delší lidské dožití :) )* 
+- Pole **Telefon** musí být zadán ve formátu `ABC DEF GHI`, `ABCDEFGHI`, `+420 ABC DEF GHI`, `+420ABCDEFGHI` - v každém případě se do tabulky zapisuje pouze formát `ABC DEF GHI` (smaže se případná předvolba)
+
+Pokud některé pole při kliknutí na tlačítko formuláře nesplňuje požadavek, zabarví se rámeček `červeně` a zobrazí se daná hláška, upozorňující uživatele na chybu.<br>
+<img src="assets/design/form-inputs-check.png">
+
 
 Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
 
