@@ -65,17 +65,17 @@ Naprogramuj webovou aplikaci pro evidenci pojistných událostí.
 
 ### Odkaz
 
-➡ [Projekt ŽIVĚ k vyzkoušení](https://pettik-itnetwork.netlify.com/) ⬅
+# ➡ [Projekt ŽIVĚ k vyzkoušení](https://pettik-itnetwork.netlify.com/) ⬅
 
 ## Muj proces
  
 
 ### Popis
 
-- Projekt spočívá v tom, že zobrazuje a přidává jednotlivé záznamy vyplněné ve **formuláři** na horní části stránky do **tabulky** ve spodní části stránky.
-- Celý projekt se skládá z hlavního souboru `index.html` a složky `assets`, ve které jsou uloženy všechny dodatečné soubory (CSS styly, obrázky pro projekt, screeny projektu, JavaScript soubory).
-- JavaScript využívá metodu **Objektově orientovaného programování** a je poskládán ze 3 souborů (`Client.js`, `InsuranceApp.js`, `index.js`).
+- Projekt spočívá v tom, že zobrazuje a přidává jednotlivé záznamy pocházející z vyplněného **formuláři** v horní oblasti stránky do **tabulky** ve spodní části stránky.
 - Při vyplnění jednotlivých políček formuláře a kliknutí na tlačítko `Uložit` se vyplněné záznamy (jsou-li správně) vypíší do jednotlivch řádků tabulky.
+- Celý projekt se skládá z hlavního souboru `index.html` a složky `assets`, ve které jsou roztříděné všechny dodatečné soubory v podsložkách (CSS styly, obrázky pro projekt, screeny projektu, JavaScript soubory).
+- JavaScript využívá metodu **Objektově orientovaného programování** a je poskládán ze 3 souborů (`Client.js`, `InsuranceApp.js`, `index.js`).
 - Je-li formulář správně vyplněný, ukládají se tyto data pole s názvem `clients` a do paměti prohlížeče `localStorage`. Při načtění stránky se kontroluje pamět localStorage a jsou-li zde nějaká data, zobrazí se v tabulce.
 - Z velké části tento projekt vychází ze základů logiky cvičení v [OOP - Lekce 5 - Tvorba OOP diáře v JavaScriptu](https://www.itnetwork.cz/javascript/oop/tvorba-oop-diare-v-javascriptu).
 - Design stránky byl záměrně inspirován designem stránky [ITnetwork.cz](https://www.itnetwork.cz/), pozadí zase aplikací **Whatsapp**.
@@ -114,6 +114,97 @@ Poslední sloupec tabulky obsahuje tlačíko `zakroužkované X`. Při kliknutí
 #### 6) Tabulka - řazení záznamů (A -> Z, 0 -> 99)
 Při kliknutí na **název sloupce** v hlavičce tabulky (*ID*, *Jméno*, *Příjmení*, *Věk*, *Číslo*) se záznamy seřadí podle daného sloupce (řazení je pouze vzestupně). Pokud je nějaké řazení aktivní, zabarví se text jinou barvou. Výchozí řazení je dle **ID**. Řadí i telefonní čísla, neřadí sloupec SMAZAT. Záměrně není nastaven **kurzor na pointer**. <br><br>
 <img src="assets/design/table-sorting.png">
+
+#### 7) Tabulka - žádný záznam
+Pokud se v tabulce nevyskytuje žádný záznam, nebo byl poslední zázna smazán - zobrazí se hláška **Zatím tady není žádný pojištěnec**.<br><br>
+<img src="assets/design/table-nouser.png">
+
+#### 8) Ovládací tlačítka - loadDataButton
+Ve spodní pravé části obrazovky *(případně pod tabulkou na mobilních zařízeních)* se nacházejí **2 tlačítka (flushButton, loadDataButton)**. Tlačítko **loadDataButton** smaže stávající data v tabulce, nahraje *předvyplněná data v JS souboru `InsuranceApp.js`* a vyplní tabulku testovacími údaji  *(tzn. nahraje testovací pole `clients`, uloží pole do paměti `localStorage`)*. Při zastavení kurzorem myši se na tlačítku **loadDataButton** se spustí CSS animace, zobrazující hlášku s nápovědou, co toto tlačítko dělá: `Tlačítko pro nahrání testovacích dat`<br><br>
+<img src="assets/design/buttons-load.png">
+<br>
+**Testovací data:**
+
+<table>
+<tr>
+<td>ID</td>
+<td>Jméno a příjmení</td>
+<td>Telefon</td>
+<td>Věk</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Jarda Čeperka</td>
+<td>777 848 741</td>
+<td>44</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Andreas Novotný</td>
+<td>731 785 444</td>
+<td>31</td>
+</tr>  
+<tr>
+<td>3</td>
+<td>Jarmila Koukalovic</td>
+<td>605 454 777</td>
+<td>22</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Veronika Kovářová</td>
+<td>607 578 646</td>
+<td>30</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Johanes Keitl</td>
+<td>777 484 684</td>
+<td>18</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Karel Zámečník</td>
+<td>605 444 847</td>
+<td>44</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Lucie Nováková</td>
+<td>602 123 456</td>
+<td>27</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Pavel Svoboda</td>
+<td>777 987 654</td>
+<td>39</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Eva Křížová</td>
+<td>604 555 888</td>
+<td>33</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Martin Dvořák</td>
+<td>733 111 222</td>
+<td>45</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Jaroslav Novák</td>
+<td>608 999 333</td>
+<td>28</td>
+</tr>
+</table>   	    	
+
+
+#### 9) Ovládací tlačítka - flushButton
+Ve spodní pravé části obrazovky *(případně pod tabulkou na mobilních zařízeních)* se nacházejí **2 tlačítka (flushButton, loadDataButton)**. Tlačítko **flushButton** smaže celou tabulku *(tzn. vymaže pole `clients`, smaže paměť `localStorage`, refreshuje stránku)*. Při zastavení kurzorem myši se na tlačítku **flushButton** se spustí CSS animace, zobrazující hlášku s nápovědou, co toto tlačítko dělá: `Tlačítko pro restart dat`
+<br><br>
+<img src="assets/design/buttons-flush.png">
 
 
 
