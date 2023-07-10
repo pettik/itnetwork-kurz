@@ -72,14 +72,15 @@ Naprogramuj webovou aplikaci pro evidenci pojistných událostí.
 
 ### Popis
 
-- Projekt spočívá v tom, že přidává jednotlivé záznamy z **formuláře** na horní části stránky do **tabulky** ve spodní části stránky.
-- Skládá z hlavního souboru `index.html` a složky `assets`, ve které jsou uloženy všechny dodatečné soubory (CSS styly, obrázky pro projekt, screeny projektu, JavaScript soubory).
+- Projekt spočívá v tom, že zobrazuje a přidává jednotlivé záznamy vyplněné ve **formuláři** na horní části stránky do **tabulky** ve spodní části stránky.
+- Celý projekt se skládá z hlavního souboru `index.html` a složky `assets`, ve které jsou uloženy všechny dodatečné soubory (CSS styly, obrázky pro projekt, screeny projektu, JavaScript soubory).
 - JavaScript využívá metodu **Objektově orientovaného programování** a je poskládán ze 3 souborů (`Client.js`, `InsuranceApp.js`, `index.js`).
 - Při vyplnění jednotlivých políček formuláře a kliknutí na tlačítko `Uložit` se vyplněné záznamy (jsou-li správně) vypíší do jednotlivch řádků tabulky.
 - Z velké části tento projekt vychází ze základů logiky cvičení v [OOP - Lekce 5 - Tvorba OOP diáře v JavaScriptu](https://www.itnetwork.cz/javascript/oop/tvorba-oop-diare-v-javascriptu).
+- Design stránky byl záměrně inspirován designem stránky [ITnetwork.cz](https://www.itnetwork.cz/), pozadí zase aplikací **Whatsapp**.
 
 
-### What I learned
+### Funkcionality 
 
 Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
 
