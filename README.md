@@ -1,4 +1,4 @@
-# ITNETWORK - ZÁVĚREČNÝ PROJEKT
+# ITNETWORK - ZÁVĚREČNÝ PROJEKT (INSURANCEAPP)
 
 V tomto repozitáři naleznete **ZÁVEREČNÝ PROJEKT (Evidence pojištění - Zjednodušená verze)** k rekvalifikačnímu kurzu **Programátor www aplikací v JavaScript** od společnosti [ITNetwork.cz](https://www.itnetwork.cz/prace-a-podnikani-v-it/rekvalifikacni-kurzy).
 
@@ -9,9 +9,9 @@ V tomto repozitáři naleznete **ZÁVEREČNÝ PROJEKT (Evidence pojištění - Z
 - [Přehled](#přehled)
   - [Zadání projektu 📋](#zadani)
   - [Náhled 👀](#nahled)
-  - [Odkaz 📡](#odkaz)
-- [My process](#my-process)
-  - [Built with](#built-with)
+  - [Odkaz LIVE ➡🌍⬅](#odkaz)
+- [Můj proces](#muj-proces)
+  - [Popis](#popis)
   - [What I learned](#what-i-learned)
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
@@ -67,20 +67,17 @@ Naprogramuj webovou aplikaci pro evidenci pojistných událostí.
 
 ➡ [Projekt ŽIVĚ k vyzkoušení](https://pettik-itnetwork.netlify.com/) ⬅
 
-## My process
+## Muj proces
+ 
 
-### Built with
+### Popis
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
+- Projekt spočívá v tom, že přidává jednotlivé záznamy z **formuláře** na horní části stránky do **tabulky** ve spodní části stránky
+- projekt se skládá z hlavního souboru `index.html` a složky `assets`, ve které jsou uloženy všechny dodatečné soubory (CSS styly, obrázky pro projekt, screeny projektu, JavaScript soubory)
+- JavaScript využívá metodu **Objektově orientovaného programování** a je poskládán ze 3 souborů (`Client.js`, `InsuranceApp.js`,`index.js`)
+- Při vyplnění jednotlivých políček formuláře a kliknutí na tlačítko `Uložit` se vyplněné záznamy (jsou-li správně) vypíší do
+- Z velké části tento projekt vychází ze základů logiky cvičení v [OOP - Lekce 5 - Tvorba OOP diáře v JavaScriptu](https://www.itnetwork.cz/javascript/oop/tvorba-oop-diare-v-javascriptu).
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
 
 ### What I learned
 
