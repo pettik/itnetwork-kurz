@@ -63,7 +63,7 @@ Naprogramuj webovou aplikaci pro evidenci pojistných událostí.
 ### Odkaz
 <br> 
   
-# ➡ [Projekt ŽIVĚ k vyzkoušení](https://pettik-itnetwork.netlify.com/) ⬅
+# ➡ [Projekt ŽIVĚ k vyzkoušení](https://funny-salmiakki-9acd9f.netlify.app/) ⬅
 
 <br><br><br><br>
 ## Muj proces
