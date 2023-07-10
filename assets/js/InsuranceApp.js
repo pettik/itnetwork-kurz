@@ -98,7 +98,7 @@ class InsuranceApp {
     }
 
     // Validate age
-    if (isNaN(ageInput) || ageInput < 0 || ageInput > 150) {
+    if (isNaN(ageInput) || ageInput < 0 || ageInput > 169) {
       this.showErrorMessage('error-age');
       this.ageInput.classList.add('red-border');
       valid = false;
