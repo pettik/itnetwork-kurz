@@ -113,13 +113,13 @@ Při každém záznamu se čísluje záznam hodnout `ID`, která je jako první 
 -----
 
 #### 5) Tabulka - mazání záznamu
-Poslední sloupec tabulky obsahuje tlačíko `zakroužkované X`. Při kliknutí na toto tlačítko u daného záznamu se jednotlivý řádek smaže a záznam se odstraní z pole `clients` i z paměti `localStorage`. <br> <br>
+Poslední sloupec tabulky obsahuje tlačíko `zakroužkované X`. Při kliknutí na toto tlačítko u daného záznamu se jednotlivý řádek smaže a záznam se odstraní z pole `clients`. <br> <br>
 <img src="assets/design/table-delete.png">
 
 -----
 
 #### 6) Tabulka - řazení záznamů (A -> Z, 0 -> 99)
-Při kliknutí na **název sloupce** v hlavičce tabulky (*ID*, *Jméno*, *Příjmení*, *Věk*, *Číslo*) se záznamy seřadí podle daného sloupce (řazení je pouze vzestupně). Pokud je nějaké řazení aktivní, zabarví se text jinou barvou. Výchozí řazení je dle **ID**. Řadí i telefonní čísla, neřadí sloupec SMAZAT. Záměrně není nastaven **kurzor na pointer**. <br><br>
+Při kliknutí na **název sloupce** v hlavičce tabulky (*ID*, *Jméno*, *Příjmení*, *Věk*, *Číslo*) se záznamy seřadí podle daného sloupce *(řazení je pouze vzestupně)*. Pokud je nějaké řazení aktivní, zabarví se text jinou barvou. Výchozí řazení je dle **ID**. Řadí i telefonní čísla, neřadí sloupec **Smazat**. Záměrně není nastaven **kurzor na pointer**. <br><br>
 <img src="assets/design/table-sorting.png">
 
 -----
@@ -131,7 +131,9 @@ Pokud se v tabulce nevyskytuje žádný záznam, nebo byl poslední zázna smaz�
 -----
 
 #### 8) Ovládací tlačítka - loadDataButton
-Ve spodní pravé části obrazovky *(případně pod tabulkou na mobilních zařízeních)* se nacházejí **2 tlačítka (flushButton, loadDataButton)**. Tlačítko **loadDataButton** smaže stávající data v tabulce, nahraje *předvyplněná data v JS souboru `InsuranceApp.js`* a vyplní tabulku testovacími údaji  *(tzn. nahraje testovací pole `clients`, uloží pole do paměti `localStorage`)*. Při zastavení kurzorem myši se na tlačítku **loadDataButton** se spustí CSS animace, zobrazující hlášku s nápovědou, co toto tlačítko dělá: `Tlačítko pro nahrání testovacích dat`<br><br>
+Ve spodní pravé části obrazovky *(případně pod tabulkou na mobilních zařízeních)* se nacházejí **2 tlačítka (flushButton, loadDataButton)**. Tlačítko **loadDataButton** smaže stávající data v tabulce, nahraje *předvyplněná data v JS souboru `InsuranceApp.js`* a vyplní tabulku testovacími údaji  *(tzn. nahraje testovací pole `clients`, uloží pole do paměti `localStorage`)*. 
+
+Při zastavení kurzorem myši se na tlačítku **loadDataButton** se spustí CSS animace, zobrazující hlášku s nápovědou, co toto tlačítko dělá: `Tlačítko pro nahrání testovacích dat`<br><br>
 <img src="assets/design/buttons-load.png">
 <br>
 **Testovací data:**
@@ -214,7 +216,9 @@ Ve spodní pravé části obrazovky *(případně pod tabulkou na mobilních za�
 -----
 
 #### 9) Ovládací tlačítka - flushButton
-Ve spodní pravé části obrazovky *(případně pod tabulkou na mobilních zařízeních)* se nacházejí **2 tlačítka (flushButton, loadDataButton)**. Tlačítko **flushButton** smaže celou tabulku *(tzn. vymaže pole `clients`, smaže paměť `localStorage`, refreshuje stránku)*. Při zastavení kurzorem myši se na tlačítku **flushButton** se spustí CSS animace, zobrazující hlášku s nápovědou, co toto tlačítko dělá: `Tlačítko pro restart dat`
+Ve spodní pravé části obrazovky *(případně pod tabulkou na mobilních zařízeních)* se nacházejí **2 tlačítka (flushButton, loadDataButton)**. Tlačítko **flushButton** smaže celou tabulku *(tzn. vymaže pole `clients`, smaže paměť `localStorage`, refreshuje stránku)*. 
+
+Při zastavení kurzorem myši se na tlačítku **flushButton** se spustí CSS animace, zobrazující hlášku s nápovědou, co toto tlačítko dělá: `Tlačítko pro restart dat`
 <br><br>
 <img src="assets/design/buttons-flush.png">
 
