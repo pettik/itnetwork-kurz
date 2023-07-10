@@ -84,6 +84,8 @@ Naprogramuj webovou aplikaci pro evidenci pojistných událostí.
 Kliknutím na tlačítko **měsíce** v horní liště nadpisu (v pravném rohu stránky), se v JavaScriptu přidá k určitým elementům na stráce `CSS třída`, která má jiné vizuální vlastnosti a tím se docílí se prolnutí do **tmavého režimu**. Opětovným kliknutím na již změněnou ikonku **měsíce/slunce**, se třída odstraní a docílí se původního (svělého) motivu. Přechod je plynulý a nastavuje se paramterem `--theme-time` v CSS stylech (aktuálně trvá 0.85s).<br> <br>
 <img src="assets/design/moon-sun-icon.png">
 
+-----
+
 #### 2) Formulář - ošetření vstupů uživatele
 Jednotlivé textové vstupy od uživatele jsou při kliknutí na tlačítko **Uložit** kontrolovány náslědovně:
 
@@ -95,26 +97,38 @@ Jednotlivé textové vstupy od uživatele jsou při kliknutí na tlačítko **Ul
 Pokud některé pole při kliknutí na tlačítko formuláře nesplňuje požadavek, zabarví se rámeček `červeně` a zobrazí se daná hláška, upozorňující uživatele na chybu.<br><br>
 <img src="assets/design/form-inputs-check.png">
 
+-----
+
 #### 3) Tabulka - zobrazení počtu pojištěnců
 
 V nadpise tabulky `Pojištěnci (?)` se zobrazuje aktuální počet pojištěnců *(hodnota je délka pole clients)* <br>
 <img src="assets/design/table-user-count.png">
 
+-----
+
 #### 4) Tabulka - sloupec ID pojištěnců
 Při každém záznamu se čísluje záznam hodnout `ID`, která je jako první sloupec v tabulce. Je-li záznam smazán, počítá číslování i s tímto smazaným záznamem. ID je unikátní pro každý záznam *(řádek)*. <br> <br>
 <img src="assets/design/table-ids.png">
+
+-----
 
 #### 5) Tabulka - mazání záznamu
 Poslední sloupec tabulky obsahuje tlačíko `zakroužkované X`. Při kliknutí na toto tlačítko u daného záznamu se jednotlivý řádek smaže a záznam se odstraní z pole `clients` i z paměti `localStorage`. <br> <br>
 <img src="assets/design/table-delete.png">
 
+-----
+
 #### 6) Tabulka - řazení záznamů (A -> Z, 0 -> 99)
 Při kliknutí na **název sloupce** v hlavičce tabulky (*ID*, *Jméno*, *Příjmení*, *Věk*, *Číslo*) se záznamy seřadí podle daného sloupce (řazení je pouze vzestupně). Pokud je nějaké řazení aktivní, zabarví se text jinou barvou. Výchozí řazení je dle **ID**. Řadí i telefonní čísla, neřadí sloupec SMAZAT. Záměrně není nastaven **kurzor na pointer**. <br><br>
 <img src="assets/design/table-sorting.png">
 
+-----
+
 #### 7) Tabulka - žádný záznam
 Pokud se v tabulce nevyskytuje žádný záznam, nebo byl poslední zázna smazán - zobrazí se hláška **Zatím tady není žádný pojištěnec**.<br><br>
 <img src="assets/design/table-nouser.png">
+
+-----
 
 #### 8) Ovládací tlačítka - loadDataButton
 Ve spodní pravé části obrazovky *(případně pod tabulkou na mobilních zařízeních)* se nacházejí **2 tlačítka (flushButton, loadDataButton)**. Tlačítko **loadDataButton** smaže stávající data v tabulce, nahraje *předvyplněná data v JS souboru `InsuranceApp.js`* a vyplní tabulku testovacími údaji  *(tzn. nahraje testovací pole `clients`, uloží pole do paměti `localStorage`)*. Při zastavení kurzorem myši se na tlačítku **loadDataButton** se spustí CSS animace, zobrazující hlášku s nápovědou, co toto tlačítko dělá: `Tlačítko pro nahrání testovacích dat`<br><br>
@@ -197,19 +211,21 @@ Ve spodní pravé části obrazovky *(případně pod tabulkou na mobilních za�
 </tr>
 </table>   	    	
 
+-----
 
 #### 9) Ovládací tlačítka - flushButton
 Ve spodní pravé části obrazovky *(případně pod tabulkou na mobilních zařízeních)* se nacházejí **2 tlačítka (flushButton, loadDataButton)**. Tlačítko **flushButton** smaže celou tabulku *(tzn. vymaže pole `clients`, smaže paměť `localStorage`, refreshuje stránku)*. Při zastavení kurzorem myši se na tlačítku **flushButton** se spustí CSS animace, zobrazující hlášku s nápovědou, co toto tlačítko dělá: `Tlačítko pro restart dat`
 <br><br>
 <img src="assets/design/buttons-flush.png">
 
+-----
 
-## Autor
+## Autor 
 
 - Website - [GitHub](https://github.com/pettik)
 - Frontend Mentor - [@pettik](https://www.frontendmentor.io/profile/pettik)
 - ITNetwork - [@Petr Bednarski](https://www.itnetwork.cz/portfolio/41117)
 
 
-
+© 2023
 
