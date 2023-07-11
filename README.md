@@ -91,8 +91,8 @@ Kliknutím na tlačítko **měsíce** v horní liště nadpisu (v pravném rohu 
 #### 2) Formulář - ošetření vstupů uživatele
 Jednotlivé textové vstupy od uživatele jsou při kliknutí na tlačítko **Uložit** kontrolovány náslědovně:
 
-- Pole **Jméno** musí obsahovat alespoň **2 znaky**
-- Pole **Příjmení** musí obsahovat alespoň **2 znaky**
+- Pole **Jméno** musí obsahovat alespoň **2 znaky** *(mohou být i číslice, kdyby bylo potřeba napsat Petr99)*
+- Pole **Příjmení** musí obsahovat alespoň **2 znaky** *(mohou být i číslice, kdyby bylo potřeba napsat např. Novák 2)*
 - Pole **Věk** musí být **číslice** v rozmezí **0** až **169** *(na Zemi nebylo dokázáno delší lidské dožití :) )* 
 - Pole **Telefon** musí být zadán ve formátu `ABC DEF GHI`, `ABCDEFGHI`, `+420 ABC DEF GHI`, `+420ABCDEFGHI` - v každém případě se do tabulky zapisuje pouze formát `ABC DEF GHI` (smaže se případná předvolba)
 
