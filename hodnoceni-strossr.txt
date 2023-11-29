@@ -1,0 +1,16 @@
+Ceníme práci na projektu! 🏆 Prohlédli jsme si kód a máme k němu následující poznámky:
+
+1. Pojmenování identifikátorů - Obrátil bych pořadí slov názvu metody styleReset() -> resetStyle(). Přejmenoval bych také clientCounterh2.
+2. Dodržení principů SRP a SoC - Třída InsuranceApp zpracovává uživatelské rozhraní i správu dat, což porušuje SRP a SoC (Separation of Concerns). Měla by být rozdělena na více tříd pro oddělení logiky uživatelského rozhraní a správy dat.
+3. Vhodný výběr datových typů - Ok.
+4. Formátování kódu - Ok.
+5. Duplicitní kód a nekonečné cykly - Řazení záznamů má duplicitní kód. Řazení jména a příjmení lze vyčlenit do samostatné metody, stejně i řazení dle čísel (věk, id, telefon).
+6. Validace vstupních dat - Drobná chybka u validace telefonních čísel - pokud validujeme číslo s předvolbou, mělo by být v obou případech dvanáctimístné. Oprav parsování tel.č. s předvolbou (vstupy +606 606 606 nebo +421123456789 se neukládají korektně, odstraňuje se jen předvolba ČR).
+7. Logičnost a složitost - Ok.
+8. Komentáře - Co znamená opakující se komentář //BIG CHANGES?
+9. Celkové hodnocení - Aplikace splňuje zadání, rozšiřuje jej o některé další funkčnosti a je také slušně nastylována. Pro začínajícího programátora je to dobrý kus práce. Největší problém je duplicitní kód a míchání uživatelské interakce s logikou v jedné třídě. Opravil bych též chybu ve validačních pravidlech (viz bod č. 6).
+
+
+Doporučujeme případné výtky v kódu opravit, abyste jej mohli pak prezentovat budoucímu zaměstnavateli v co nejlepší kvalitě. Pokud byste potřebovali s čímkoli pomoci, naplánujte si s námi konzultaci, rádi vám poradíme!
+
+hodnoceni-strossr.txt
